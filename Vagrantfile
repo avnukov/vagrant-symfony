@@ -1,7 +1,8 @@
 Vagrant.configure("2") do |config|
     # Configure the box to use
-    config.vm.box       = 'precise64'
-    config.vm.box_url   = 'http://files.vagrantup.com/precise64.box'
+    config.vm.box       = 'ubuntu/trusty64'
+    # config.vm.box_url   = 'http://files.vagrantup.com/trusty64.box'
+    # config.vm.box_url   = 'https://vagrantcloud.com/ubuntu/boxes/trusty64'
 
     # Configure the network interfaces
     config.vm.network :private_network, ip:    "192.168.33.10"
@@ -17,7 +18,7 @@ Vagrant.configure("2") do |config|
     # Configure VirtualBox environment
     config.vm.provider :virtualbox do |v|
         v.name = (0...8).map { (65 + rand(26)).chr }.join
-        v.customize [ "modifyvm", :id, "--memory", 512 ]
+        v.customize [ "modifyvm", :id, "--memory", 1024 ]
     end
 
     # Provision the box
